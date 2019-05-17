@@ -83,3 +83,8 @@ prometheus:
     port: 5556
 
     resources: {}
+    serviceMonitor:
+      enabled: false
+      namespace: kube-system
+      interval: 30s
+      operatorRelease: prometheus-operator

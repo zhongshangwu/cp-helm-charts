@@ -21,7 +21,7 @@ imageTag: 5.2.1
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
 imagePullPolicy: IfNotPresent
 
-## Specify an array of imagePullSecrets. 
+## Specify an array of imagePullSecrets.
 ## Secrets must be manually created in the namespace.
 ## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 imagePullSecrets:
@@ -116,3 +116,8 @@ prometheus:
     ## Resources configuration for the JMX exporter container.
     ## See the `resources` documentation above for details.
     resources: {}
+    serviceMonitor:
+      enabled: false
+      namespace: kube-system
+      interval: 30s
+      operatorRelease: prometheus-operator
