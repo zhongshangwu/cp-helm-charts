@@ -1,0 +1,53 @@
+cp-zookeeper:
+  persistence:
+    enabled: false
+  prometheus:
+    jmx:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: saber-test
+        selectorLabels:
+          monitor: prometheus-operator
+
+cp-schema-registry:
+  enabled: true
+  prometheus:
+    jmx:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: saber-test
+        selectorLabels:
+          monitor: prometheus-operator
+
+cp-kafka-rest:
+  enabled: false
+
+cp-kafka-connect:
+  enabled: true
+  prometheus:
+    jmx:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: saber-test
+        interval: 30s
+        selectorLabels:
+          monitor: prometheus-operator
+
+cp-ksql-server:
+  enabled: false
+
+cp-kafka:
+  persistence:
+    enabled: false
+    disksPerBroker: ''
+  prometheus:
+    jmx:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: saber-test
+        selectorLabels:
+          monitor: prometheus-operator

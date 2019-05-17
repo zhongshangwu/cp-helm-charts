@@ -10,7 +10,11 @@ metadata:
     chart: {{ template "cp-ksql-server.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    operator-release: {{ .Values.prometheus.jmx.serviceMonitor.operatorRelease }}
+{{- if .Values.prometheus.jmx.serviceMonitor.selectorLabels }}
+{{ toYaml .Values.prometheus.jmx.serviceMonitor.selectorLabels | indent 4 }}
+{{ else }}
+    monitor: prometheus-operator
+{{- end }}
 spec:
   jobLabel: {{ template "cp-ksql-server.fullname" . }}
   selector:
